@@ -35,7 +35,6 @@ export const  take = ( n: number, iterator: AbstractIterator ) => ({
         return res;
       }
     }
-    
   }
 })
 

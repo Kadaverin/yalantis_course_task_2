@@ -1,11 +1,7 @@
-import { usersIdsGenerator } from './../utils';
-import { users as allEntities } from './../constants'
+import { usersIdsGenerator, getStubRandTimeInMs } from './../utils';
 
 import { UserDto, UserCreationDto, BulkUserDto } from './../dto/index';
 import { User, Group } from './../entities/index';
-
-import { getStubRandTimeInMs } from './../utils';
-
 
 
 export class UserRepository {
@@ -13,18 +9,18 @@ export class UserRepository {
     return new Promise<User>( resolve => {
       const user = {
         ...userInfo,
-        id: usersIdsGenerator.next().value
+        id: usersIdsGenerator.next().value,
       };
     
       setTimeout(() => resolve(user), getStubRandTimeInMs());
     });
   }
 
-  static addUserToGroup(user: UserDto | User, group: Group): Promise<User> {
+  static addUserToGroup(user: UserDto, group: Group): Promise<User> {
     return new Promise( resolve => {
       const userWithGroup = {
         ...user,
-        groupId: group.id
+        groupId: group.id,
       };
 
       setTimeout( () => resolve(userWithGroup), getStubRandTimeInMs());
@@ -37,7 +33,7 @@ export class UserRepository {
         user = await this.create(user);
       }
 
-      return this.addUserToGroup(user as User, group);
+      return this.addUserToGroup(user as UserDto, group);
     })
 
     return Promise.all(promises);
