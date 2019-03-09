@@ -10,10 +10,8 @@
     "webpack": "webpack -d --watch"
   },
   "dependencies": {
-    "@types/uuid": "^3.4.4",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333",
-    "uuid": "^3.3.2",
     "webpack": "^4.29.6"
   },
   "devDependencies": {
