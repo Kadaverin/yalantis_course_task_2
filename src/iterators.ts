@@ -14,7 +14,7 @@ export const makeIntegerIterator = (startValue = 0) => ({
   } 
 })
 
-export const  take = ( n: number, iterator: AbstractIterator ) => ({
+export const take = ( n: number, iterator: AbstractIterator ) => ({
   [Symbol.iterator]: () => {
     let step = 1;
     return {
